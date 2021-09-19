@@ -1,0 +1,32 @@
+name: coverage
+on:
+  pull_request:
+    paths:
+      - 'github_checks/**'
+defaults:
+  run: { shell: bash }
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix: { os: [ubuntu] }
+    runs-on: ${{ matrix.os }}-latest
+    steps:
+    - uses: styfle/cancel-workflow-action@0.8.0
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v2
+      with: {python-version: '3.8'}
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        pip install poetry
+        poetry install
+    - name: Run tests
+      run: |
+        poetry run coverage run github_checks/manage.py test
+    - name: Run script
+      env:
+        CONTEXT_GITHUB: ${{ toJson(github) }}
+      run: |
+        poetry run python .github/scripts/check_coverage.py
