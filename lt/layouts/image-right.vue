@@ -1,24 +1,17 @@
 <script setup lang="ts">
-import { computed } from "vue";
 const props = defineProps({
-  image: {
+  text: {
     type: String,
   },
-  class: {
+  trans: {
     type: String,
   },
   href: {
     type: String,
   },
-  maxWidth: {
-    type: String,
-  },
   caption: {
     type: String,
   },
-});
-const style = computed(() => {
-  return { "max-width": props.maxWidth };
 });
 </script>
 
@@ -29,18 +22,19 @@ const style = computed(() => {
       :class="props.class"
     >
       <div class="my-auto w-full text-center">
-        <slot />
+        <h1 v-html="text"></h1>
+        <p v-html="trans"></p>
       </div>
     </div>
     <div class="image-right h-full grid place-content-center">
       <a v-if="href" :href="href">
-        <img class="m-auto border-radius" :style="style" :src="image" />
+        <slot />
         <p class="text-3xl text-center font-semibold">
           {{ caption }}
         </p>
       </a>
       <div v-else>
-        <img class="m-auto border-radius" :style="style" :src="image" />
+        <slot />
         <p class="text-3xl text-center font-semibold">
           {{ caption }}
         </p>

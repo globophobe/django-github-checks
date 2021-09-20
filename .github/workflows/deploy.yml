@@ -1,6 +1,8 @@
 name: Deploy pages
 on:
   push:
+    paths:
+      - 'lt/**'
 jobs:
   deploy:
     runs-on: ubuntu-latest

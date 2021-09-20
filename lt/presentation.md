@@ -28,15 +28,13 @@ theme: ./
 
 ---
 layout: image-right
-image: ./assets/arex.jpg
+text: My username on Connpass is globophobe.
+trans: Connpassのユーザ名はglobophobeです。
 href: https://github.com/globophobe
-maxWidth: 80%
 caption: globophobe 
 ---
 
-# My username on Connpass is globophobe.
-
-Connpassのユーザ名はglobophobeです。
+<img class="m-auto border-radius" style="max-width: 80%;" src="/assets/arex.jpg" />
 
 ---
 
@@ -114,9 +112,9 @@ trans: そのロジックは：
 
 ---
 
-# I don't enjoy writing shell commands.
+# I prefer to write Python rather than shell commands.
 
-シェルコマンドを書くのはあまり好きではありません。
+シェルコマンドよりもPythonを書く方が好きです。
 
 ---
 layout: code
